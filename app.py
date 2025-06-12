@@ -15,7 +15,9 @@ print("🔑 Loaded OpenAI API key:", openai.api_key[:10], "...")
 print("🎯 Fine-tuned model ID:", FINE_TUNED_MODEL)
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+
+# ✅ CORS: Allow any origin (or tighten to your frontend's Vercel domain)
+CORS(app, resources={r"/*": {"origins": "*"}})  # or set to https://your-vercel-url.vercel.app
 
 @app.route("/", methods=["GET"])
 def health_check():
